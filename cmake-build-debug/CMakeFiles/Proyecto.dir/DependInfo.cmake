@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/hal_dyn_uart/hal_dyn_uart_emu.c" "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/cmake-build-debug/CMakeFiles/Proyecto.dir/hal_dyn_uart/hal_dyn_uart_emu.c.obj"
   "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/joystick_emu/joystick.c" "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/cmake-build-debug/CMakeFiles/Proyecto.dir/joystick_emu/joystick.c.obj"
   "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/main.c" "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/cmake-build-debug/CMakeFiles/Proyecto.dir/main.c.obj"
+  "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/posicion.c" "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/cmake-build-debug/CMakeFiles/Proyecto.dir/posicion.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

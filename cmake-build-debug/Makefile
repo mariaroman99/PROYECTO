@@ -419,6 +419,33 @@ main.c.s:
 	$(MAKE) -f CMakeFiles\Proyecto.dir\build.make CMakeFiles/Proyecto.dir/main.c.s
 .PHONY : main.c.s
 
+posicion.obj: posicion.c.obj
+
+.PHONY : posicion.obj
+
+# target to build an object file
+posicion.c.obj:
+	$(MAKE) -f CMakeFiles\Proyecto.dir\build.make CMakeFiles/Proyecto.dir/posicion.c.obj
+.PHONY : posicion.c.obj
+
+posicion.i: posicion.c.i
+
+.PHONY : posicion.i
+
+# target to preprocess a source file
+posicion.c.i:
+	$(MAKE) -f CMakeFiles\Proyecto.dir\build.make CMakeFiles/Proyecto.dir/posicion.c.i
+.PHONY : posicion.c.i
+
+posicion.s: posicion.c.s
+
+.PHONY : posicion.s
+
+# target to generate assembly for a file
+posicion.c.s:
+	$(MAKE) -f CMakeFiles\Proyecto.dir\build.make CMakeFiles/Proyecto.dir/posicion.c.s
+.PHONY : posicion.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -461,6 +488,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... posicion.obj
+	@echo ... posicion.i
+	@echo ... posicion.s
 .PHONY : help
 
 

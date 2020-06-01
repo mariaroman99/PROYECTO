@@ -10,6 +10,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Proyecto.dir/hal_dyn_uart/hal_dyn_uart_emu.c.obj"
   "CMakeFiles/Proyecto.dir/joystick_emu/joystick.c.obj"
   "CMakeFiles/Proyecto.dir/main.c.obj"
+  "CMakeFiles/Proyecto.dir/posicion.c.obj"
   "Proyecto.exe"
   "Proyecto.exe.manifest"
   "Proyecto.pdb"

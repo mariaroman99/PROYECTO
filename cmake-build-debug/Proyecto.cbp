@@ -138,6 +138,9 @@
 		<Unit filename="C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn_test/movement_simulator.h">
 			<Option target="Proyecto"/>
 		</Unit>
+		<Unit filename="C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/habitacion_001.h">
+			<Option target="Proyecto"/>
+		</Unit>
 		<Unit filename="C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/hal_dyn_uart/fake_msp.h">
 			<Option target="Proyecto"/>
 		</Unit>
@@ -157,6 +160,21 @@
 			<Option target="Proyecto"/>
 		</Unit>
 		<Unit filename="C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/main.h">
+			<Option target="Proyecto"/>
+		</Unit>
+		<Unit filename="C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/movement.log">
+			<Option target="Proyecto"/>
+		</Unit>
+		<Unit filename="C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/plot_movement.bat">
+			<Option target="Proyecto"/>
+		</Unit>
+		<Unit filename="C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/plot_movement.py">
+			<Option target="Proyecto"/>
+		</Unit>
+		<Unit filename="C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/posicion.c">
+			<Option target="Proyecto"/>
+		</Unit>
+		<Unit filename="C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/posicion.h">
 			<Option target="Proyecto"/>
 		</Unit>
 		<Unit filename="C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/CMakeLists.txt">

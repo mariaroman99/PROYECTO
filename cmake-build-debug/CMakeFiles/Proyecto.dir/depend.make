@@ -64,3 +64,8 @@ CMakeFiles/Proyecto.dir/main.c.obj: ../joystick_emu/joystick.h
 CMakeFiles/Proyecto.dir/main.c.obj: ../main.c
 CMakeFiles/Proyecto.dir/main.c.obj: ../main.h
 
+CMakeFiles/Proyecto.dir/posicion.c.obj: ../dyn_test/movement_simulator.h
+CMakeFiles/Proyecto.dir/posicion.c.obj: ../main.h
+CMakeFiles/Proyecto.dir/posicion.c.obj: ../posicion.c
+CMakeFiles/Proyecto.dir/posicion.c.obj: ../posicion.h
+
