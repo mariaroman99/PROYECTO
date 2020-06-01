@@ -1,0 +1,70 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../dyn/dyn_instr.h
+stdint.h
+-
+stdbool.h
+-
+
+../dyn_test/movement_simulator.h
+stdbool.h
+-
+stdint.h
+-
+time.h
+-
+
+../main.h
+
+../posicion.h
+stdint.h
+-
+stdbool.h
+-
+dyn_test/movement_simulator.h
+../dyn_test/movement_simulator.h
+
+C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn_test/dyn_emu.h
+stdint.h
+-
+stdbool.h
+-
+
+C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn_test/movement_simulator.c
+time.h
+-
+stdbool.h
+-
+stdint.h
+-
+math.h
+-
+stdio.h
+-
+pthread.h
+-
+main.h
+C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn_test/main.h
+movement_simulator.h
+C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn_test/movement_simulator.h
+posicion.h
+C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn_test/posicion.h
+dyn_instr.h
+C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn_test/dyn_instr.h
+dyn_emu.h
+C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn_test/dyn_emu.h
+
+C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn_test/movement_simulator.h
+stdbool.h
+-
+stdint.h
+-
+time.h
+-
+
