@@ -11,8 +11,8 @@
 #include "joystick_emu/joystick.h"
 #include "habitacion_001.h"
 
-uint8_t dreta=0x01; //Sentit dret de la roda
-uint8_t esquerra=0x00; //Sentit esquerra de la roda
+//uint8_t dreta=0x01; //Sentit dret de la roda
+//uint8_t esquerra=0x00; //Sentit esquerra de la roda
 
 uint8_t estado = Ninguno, estado_anterior = Ninguno, finalizar = 0;
 uint32_t indice;
@@ -33,6 +33,7 @@ int main(void) {
     pthread_create(&tid, NULL, dyn_emu, (void *) datos_habitacion);
     pthread_create(&jid, NULL, joystick_emu, (void *) &jid);
 
+    /*
     //Testing some high level function
     printf("\nSetting LED to 0 \n");
     dyn_led_control(1, 0);
@@ -44,6 +45,7 @@ int main(void) {
     printf("\nGetting LED value \n");
     dyn_led_read(1, &tmp);
     assert(tmp == 1);
+     */
 
     printf("\n************************\n");
     printf("Test passed successfully\n");

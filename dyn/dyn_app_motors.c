@@ -16,6 +16,8 @@
 #include "dyn/dyn_app_motors.h"
 #include "dyn_app_motors.h"
 #include "dyn_frames.h"
+#include "dyn_test/movement_simulator.c"
+#include "dyn_test/dyn_emu.h"
 
 
 void moure_roda(uint8_t module_id, bool sentit_horari, uint16_t speed){
@@ -129,3 +131,21 @@ void moure_continuament(uint8_t module_id){
 	printf(" continuament \n");
 }
 
+void pared_mes_propera(){
+    uint8_t distEsq = INITIAL_POS_X;
+    uint8_t y = INITIAL_POS_Y;
+    uint8_t distCentre = 4096-y;
+    uint8_t distDreta = 4096-distEsq;
+    if (distEsq <= distCentre && distEsq < distDreta){//Moviment a l'esq
+        move_left(ID_MOTOR_L, ID_MOTOR_R, )
+    }
+    else if (distCentre < distEsq && distCentre < distDreta){ //Moviment al centre
+            }
+    else if (distDreta <= distCentre && distDreta < distEsq){ //Moviment a la dreta
+    }
+    else if(distDreta==distCentre && distDreta==distEsq){ //Moviment esquerra
+
+    }else if(distDreta==distEsq && distDreta<distCentre){ //Moviment esquerra
+
+    }
+}

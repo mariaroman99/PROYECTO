@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn_test/movement_simulator.h
+../dyn_test/movement_simulator.h
 stdbool.h
 -
 stdint.h
@@ -14,27 +14,65 @@ stdint.h
 time.h
 -
 
-C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/main.h
-
-C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/posicion.c
-stdio.h
--
-stdbool.h
--
-math.h
--
-main.h
-C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/main.h
-posicion.h
-C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/posicion.h
-dyn_test/movement_simulator.h
-C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn_test/movement_simulator.h
-
-C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/posicion.h
+../posicion.h
 stdint.h
 -
 stdbool.h
 -
 dyn_test/movement_simulator.h
-C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn_test/movement_simulator.h
+../dyn_test/movement_simulator.h
+
+C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn/dyn_app_common.h
+stdbool.h
+-
+stdint.h
+-
+
+C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn_test/b_queue.h
+stdint.h
+-
+stdbool.h
+-
+pthread.h
+-
+
+C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn_test/dyn_emu.h
+stdint.h
+-
+stdbool.h
+-
+
+C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/habitacion_001.h
+stdint.h
+-
+
+C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/joystick_emu/joystick.h
+stdint.h
+-
+
+C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/main.c
+pthread.h
+-
+signal.h
+-
+assert.h
+-
+posicion.h
+-
+stdio.h
+-
+main.h
+C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/main.h
+dyn/dyn_app_common.h
+C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn/dyn_app_common.h
+dyn_test/dyn_emu.h
+C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn_test/dyn_emu.h
+dyn_test/b_queue.h
+C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn_test/b_queue.h
+joystick_emu/joystick.h
+C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/joystick_emu/joystick.h
+habitacion_001.h
+C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/habitacion_001.h
+
+C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/main.h
 

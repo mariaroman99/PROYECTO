@@ -228,9 +228,9 @@ void *dyn_emu(void *vargp) {
 
         switch (fsm_state) {
             case FSM_RX__HEADER_1: //canvi
-			printf("\n Waiting for new packet\n");
-            tmp = recv_byte();
-            assert(tmp == 0xFF);
+			    printf("\n Waiting for new packet\n");
+                tmp = recv_byte();
+                assert(tmp == 0xFF);
             case FSM_RX__HEADER_2: //canvi
                 tmp = recv_byte();
                 assert(tmp == 0xFF);

@@ -129,5 +129,6 @@ void distance(_robot_pos_t *robot_pos, uint8_t *izq, uint8_t *centro, uint8_t *d
     //Sensor derecha
     sensor_distance(x0, y0, theta_r, robot_pos->world, der, 2);
 
+
 }
 

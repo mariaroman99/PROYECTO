@@ -29,6 +29,7 @@ typedef enum _dyn_re_type
     _DYN_REG__MOV_SPEED__H=0x21,
     _DYN_REG__TURN_DIRECTION=0x28,
     _DYN_REG__LOAD_DIRECTION=0x29,
+
 }DYN_RE_t;
 
 void moure_roda(uint8_t module_id, bool sentit_horari, uint16_t speed);
