@@ -1,8 +1,5 @@
 /*
  * movimientos.c
- *
- *  Created on: 11 abr. 2020
- *      Author: Hristo
  */
 
 #include <stdio.h>

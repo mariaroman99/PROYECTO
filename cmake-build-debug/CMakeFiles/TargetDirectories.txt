@@ -1,3 +1,3 @@
-C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/cmake-build-debug/CMakeFiles/Proyecto.dir
-C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/cmake-build-debug/CMakeFiles/Proyecto.dir
+/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/cmake-build-debug/CMakeFiles/edit_cache.dir

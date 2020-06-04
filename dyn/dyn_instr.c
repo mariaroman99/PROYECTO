@@ -7,8 +7,11 @@
  * This file implements the different dynamixel instructions
  */
 
+#include <stdint-gcc.h>
 #include "dyn/dyn_instr.h"
 #include "dyn/dyn_frames.h"
+#include "dyn_instr.h"
+#include "dyn_frames.h"
 
 /**
  * Single byte write instruction

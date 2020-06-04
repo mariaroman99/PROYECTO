@@ -17,6 +17,8 @@
 #include "posicion.h"
 #include "dyn_instr.h"
 #include "dyn_emu.h"
+#include "../dyn/dyn_instr.h"
+#include "../posicion.h"
 
 #define OUTPUT_FILE "movement.log"
 FILE *fichero;

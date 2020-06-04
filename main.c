@@ -35,7 +35,7 @@ int main(void) {
 
     /*
     //Testing some high level function
-    printf("\nSetting LED to 0 \n");
+    /*printf("\nSetting LED to 0 \n");
     dyn_led_control(1, 0);
     printf("\nGetting LED value \n");
     dyn_led_read(1, &tmp);
@@ -44,8 +44,8 @@ int main(void) {
     dyn_led_control(1, 1);
     printf("\nGetting LED value \n");
     dyn_led_read(1, &tmp);
-    assert(tmp == 1);
-     */
+    assert(tmp == 1);*/
+
 
     printf("\n************************\n");
     printf("Test passed successfully\n");
@@ -87,6 +87,7 @@ int main(void) {
 
                     break;
                 case Left:
+                    printf("Joystik Left ('j') movido\n");
                     //Comprobaremos si detectamos las esquinas de la pared izquierda:
                     printf("Esquina inferior izquierda:\n");
                     printf("(1, 1): %d (fuera pared)\n", obstaculo(1, 1, datos_habitacion));

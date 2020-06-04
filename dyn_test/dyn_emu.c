@@ -21,6 +21,8 @@
 #include "fake_msp.h"
 #include "b_queue.h"
 #include "dyn/dyn_instr.h"
+#include "../hal_dyn_uart/fake_msp.h"
+#include "../dyn/dyn_instr.h"
 
 // State machine to implement the data transmission/reception
 typedef enum _rx_fsm_type {

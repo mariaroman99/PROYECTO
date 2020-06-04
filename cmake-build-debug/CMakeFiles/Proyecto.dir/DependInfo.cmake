@@ -4,18 +4,18 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn/dyn_app_common.c" "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/cmake-build-debug/CMakeFiles/Proyecto.dir/dyn/dyn_app_common.c.obj"
-  "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn/dyn_app_motors.c" "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/cmake-build-debug/CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.obj"
-  "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn/dyn_app_sensor.c" "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/cmake-build-debug/CMakeFiles/Proyecto.dir/dyn/dyn_app_sensor.c.obj"
-  "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn/dyn_frames.c" "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/cmake-build-debug/CMakeFiles/Proyecto.dir/dyn/dyn_frames.c.obj"
-  "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn/dyn_instr.c" "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/cmake-build-debug/CMakeFiles/Proyecto.dir/dyn/dyn_instr.c.obj"
-  "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn_test/b_queue.c" "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/cmake-build-debug/CMakeFiles/Proyecto.dir/dyn_test/b_queue.c.obj"
-  "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn_test/dyn_emu.c" "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/cmake-build-debug/CMakeFiles/Proyecto.dir/dyn_test/dyn_emu.c.obj"
-  "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/dyn_test/movement_simulator.c" "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/cmake-build-debug/CMakeFiles/Proyecto.dir/dyn_test/movement_simulator.c.obj"
-  "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/hal_dyn_uart/hal_dyn_uart_emu.c" "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/cmake-build-debug/CMakeFiles/Proyecto.dir/hal_dyn_uart/hal_dyn_uart_emu.c.obj"
-  "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/joystick_emu/joystick.c" "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/cmake-build-debug/CMakeFiles/Proyecto.dir/joystick_emu/joystick.c.obj"
-  "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/main.c" "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/cmake-build-debug/CMakeFiles/Proyecto.dir/main.c.obj"
-  "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/posicion.c" "C:/Users/maria/Documents/Universidad de Barcelona/PAE/Proyecto/cmake-build-debug/CMakeFiles/Proyecto.dir/posicion.c.obj"
+  "/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/dyn/dyn_app_common.c" "/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/cmake-build-debug/CMakeFiles/Proyecto.dir/dyn/dyn_app_common.c.o"
+  "/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/dyn/dyn_app_motors.c" "/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/cmake-build-debug/CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.o"
+  "/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/dyn/dyn_app_sensor.c" "/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/cmake-build-debug/CMakeFiles/Proyecto.dir/dyn/dyn_app_sensor.c.o"
+  "/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/dyn/dyn_frames.c" "/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/cmake-build-debug/CMakeFiles/Proyecto.dir/dyn/dyn_frames.c.o"
+  "/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/dyn/dyn_instr.c" "/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/cmake-build-debug/CMakeFiles/Proyecto.dir/dyn/dyn_instr.c.o"
+  "/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/dyn_test/b_queue.c" "/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/cmake-build-debug/CMakeFiles/Proyecto.dir/dyn_test/b_queue.c.o"
+  "/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/dyn_test/dyn_emu.c" "/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/cmake-build-debug/CMakeFiles/Proyecto.dir/dyn_test/dyn_emu.c.o"
+  "/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/dyn_test/movement_simulator.c" "/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/cmake-build-debug/CMakeFiles/Proyecto.dir/dyn_test/movement_simulator.c.o"
+  "/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/hal_dyn_uart/hal_dyn_uart_emu.c" "/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/cmake-build-debug/CMakeFiles/Proyecto.dir/hal_dyn_uart/hal_dyn_uart_emu.c.o"
+  "/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/joystick_emu/joystick.c" "/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/cmake-build-debug/CMakeFiles/Proyecto.dir/joystick_emu/joystick.c.o"
+  "/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/main.c" "/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/cmake-build-debug/CMakeFiles/Proyecto.dir/main.c.o"
+  "/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/posicion.c" "/cygdrive/c/Users/Asus/Desktop/ProgramacióArquitecturesEncastades/projecte/projectePAE/cmake-build-debug/CMakeFiles/Proyecto.dir/posicion.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

@@ -39,4 +39,5 @@ void move_left(uint8_t roda_1, uint8_t roda_2, uint16_t speed);
 void move_right(uint8_t roda_1, uint8_t roda_2, uint16_t speed);
 void canviar_velocitat(uint8_t module_id, uint16_t speed, uint8_t direction);
 void moure_continuament(uint8_t module_id);
+int pared_mes_propera();
 #endif /* DYN_APP_MOTORS_H_ */

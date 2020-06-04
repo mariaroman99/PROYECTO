@@ -18,6 +18,10 @@
 #include "dyn_frames.h"
 #include "dyn_test/movement_simulator.c"
 #include "dyn_test/dyn_emu.h"
+#include "../dyn_test/movement_simulator.h"
+#include "../dyn_test/dyn_emu.h"
+#include "../posicion.h"
+#include "../habitacion_001.h"
 
 
 void moure_roda(uint8_t module_id, bool sentit_horari, uint16_t speed){
@@ -59,14 +63,12 @@ void move_foward(uint8_t roda_1, uint8_t roda_2, uint16_t speed){
 	bool sentit_horari=true;
 	moure_roda(roda_1, !sentit_horari, speed); //Roda esquerra amb direcció esquerra
 	moure_roda(roda_2, sentit_horari, speed); //Roda dreta amb direcció dreta
-
-
 }
+
 void move_backward(uint8_t roda_1, uint8_t roda_2,  uint16_t speed){
 	bool sentit_horari=true;
 	moure_roda(roda_1, sentit_horari, speed); //Roda esquerra amb direcció dreta
 	moure_roda(roda_2, !sentit_horari, speed); //Roda dreta amb direcció esquerra
-
 }
 
 void move_left(uint8_t roda_1, uint8_t roda_2, uint16_t speed){
@@ -124,28 +126,76 @@ void moure_continuament(uint8_t module_id){
 	parameters[4]=0; //Posem a 0 el CCW Angle Limit H
 
 	resposta=RxTxPacket(module_id, 5, _DYN_INSTR__WRITE, parameters);
-	uint8_t r = resposta.StatusPacket[2];
-	printf("Sortida donada: \n");
-	printf("Moure roda ");
-	printf("%" PRIu16, resposta.StatusPacket[2]);
-	printf(" continuament \n");
+
+	//Fem que trobi la paret mes propera i la ressegueixi
+	int paret = pared_mes_propera();
+
+
 }
 
-void pared_mes_propera(){
+int pared_mes_propera(){
     uint8_t distEsq = INITIAL_POS_X;
     uint8_t y = INITIAL_POS_Y;
     uint8_t distCentre = 4096-y;
     uint8_t distDreta = 4096-distEsq;
     if (distEsq <= distCentre && distEsq < distDreta){//Moviment a l'esq
-        move_left(ID_MOTOR_L, ID_MOTOR_R, )
+        move_left(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
+        int coordX = INITIAL_POS_X, coordY = INITIAL_POS_Y;
+        // Fem un while per comprovar cada cop si hi ha un obstacle a 2 mm del robot
+        while(!obstaculo((coordX-2),coordY, datos_habitacion)){
+            move_foward(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
+            coordX--;
+        }
+        // Quan trobi la pared l'haurà de resseguir fent una rotació a la dreta
+        move_right(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
+        return 1; //Assignem arbitràriament que la paret esquerra serà 1
     }
     else if (distCentre < distEsq && distCentre < distDreta){ //Moviment al centre
-            }
+        move_foward(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
+        int coordX = INITIAL_POS_X, coordY = INITIAL_POS_Y;
+        // Fem un while per comprovar cada cop si hi ha un obstacle a 2 mm del robot
+        while(!obstaculo(coordX,(coordY+2), datos_habitacion)){
+            move_foward(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
+            coordY++;
+        }
+        // Quan trobi la pared l'haurà de resseguir fent una rotació a la dreta
+        move_right(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
+        return 2; //Assignem arbitràriament que la paret central serà 2
+    }
     else if (distDreta <= distCentre && distDreta < distEsq){ //Moviment a la dreta
+        move_right(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
+        int coordX = INITIAL_POS_X, coordY = INITIAL_POS_Y;
+        // Fem un while per comprovar cada cop si hi ha un obstacle a 2 mm del robot
+        while(!obstaculo((coordX+2),coordY, datos_habitacion)){
+            move_foward(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
+            coordX++;
+        }
+        // Quan trobi la pared l'haurà de resseguir fent una rotació a l'esquerra
+        move_left(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
+        return 3; //Assignem arbitràriament que la paret central serà 3
     }
     else if(distDreta==distCentre && distDreta==distEsq){ //Moviment esquerra
-
-    }else if(distDreta==distEsq && distDreta<distCentre){ //Moviment esquerra
-
+        move_left(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
+        int coordX = INITIAL_POS_X, coordY = INITIAL_POS_Y;
+        // Fem un while per comprovar cada cop si hi ha un obstacle a 2 mm del robot
+        while(!obstaculo((coordX-2),coordY, datos_habitacion)){
+            move_foward(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
+            coordX--;
+        }
+        // Quan trobi la pared l'haurà de resseguir fent una rotació a la dreta
+        move_right(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
+        return 1;
+    }
+    else if(distDreta==distEsq && distDreta<distCentre){ //Moviment esquerra
+        move_left(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
+        int coordX = INITIAL_POS_X, coordY = INITIAL_POS_Y;
+        // Fem un while per comprovar cada cop si hi ha un obstacle a 2 mm del robot
+        while(!obstaculo((coordX-2),coordY, datos_habitacion)){
+            move_foward(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
+            coordX--;
+        }
+        // Quan trobi la pared l'haurà de resseguir fent una rotació a la dreta
+        move_right(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
+        return 1;
     }
 }
