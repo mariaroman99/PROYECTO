@@ -10,6 +10,7 @@
 #include "dyn_test/b_queue.h"
 #include "joystick_emu/joystick.h"
 #include "habitacion_001.h"
+#include "dyn/dyn_app_motors.h"
 
 //uint8_t dreta=0x01; //Sentit dret de la roda
 //uint8_t esquerra=0x00; //Sentit esquerra de la roda
@@ -81,10 +82,10 @@ int main(void) {
                     printf("\n");
                     break;
                 case Up:
-
+                    move_foward(rodaEsquerra, rodaDreta, velocitat);
                     break;
                 case Down:
-
+                    move_right(rodaEsquerra, rodaDreta, velocitat);
                     break;
                 case Left:
                     printf("Joystik Left ('j') movido\n");

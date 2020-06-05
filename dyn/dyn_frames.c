@@ -13,6 +13,7 @@
 
 #include "hal_dyn_uart/hal_dyn_uart_emu.h"
 #include "fake_msp.h"
+#include "../hal_dyn_uart/fake_msp.h"
 
 #define f_TxUAC2 TxUAC2_emu
 #define f_Sentit_Dades_Tx Sentit_Dades_Tx_emu

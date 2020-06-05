@@ -7,18 +7,12 @@ CMakeFiles/Proyecto.dir/dyn/dyn_app_common.c.o: ../dyn/dyn_instr.h
 
 CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.o: ../dyn/dyn_app_motors.h
 CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.o: ../dyn/dyn_frames.h
-CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.o: ../dyn/dyn_instr.h
 CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.o: ../dyn_test/dyn_emu.h
-CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.o: ../dyn_test/movement_simulator.c
-CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.o: ../dyn_test/movement_simulator.h
-CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.o: ../main.h
-CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.o: ../posicion.h
 CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.o: ../dyn/dyn_app_motors.c
 CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.o: ../dyn/dyn_app_motors.h
 CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.o: ../dyn/dyn_frames.h
 CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.o: ../dyn_test/dyn_emu.h
 CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.o: ../dyn_test/movement_simulator.h
-CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.o: ../habitacion_001.h
 CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.o: ../posicion.h
 
 CMakeFiles/Proyecto.dir/dyn/dyn_app_sensor.c.o: ../dyn/dyn_app_sensor.h
@@ -32,6 +26,7 @@ CMakeFiles/Proyecto.dir/dyn/dyn_frames.c.o: ../hal_dyn_uart/fake_msp.h
 CMakeFiles/Proyecto.dir/dyn/dyn_frames.c.o: ../hal_dyn_uart/hal_dyn_uart_emu.h
 CMakeFiles/Proyecto.dir/dyn/dyn_frames.c.o: ../dyn/dyn_frames.c
 CMakeFiles/Proyecto.dir/dyn/dyn_frames.c.o: ../dyn/dyn_frames.h
+CMakeFiles/Proyecto.dir/dyn/dyn_frames.c.o: ../hal_dyn_uart/fake_msp.h
 
 CMakeFiles/Proyecto.dir/dyn/dyn_instr.c.o: ../dyn/dyn_frames.h
 CMakeFiles/Proyecto.dir/dyn/dyn_instr.c.o: ../dyn/dyn_instr.h
@@ -74,6 +69,7 @@ CMakeFiles/Proyecto.dir/joystick_emu/joystick.c.o: ../joystick_emu/joystick.h
 CMakeFiles/Proyecto.dir/main.c.o: ../dyn_test/movement_simulator.h
 CMakeFiles/Proyecto.dir/main.c.o: ../posicion.h
 CMakeFiles/Proyecto.dir/main.c.o: ../dyn/dyn_app_common.h
+CMakeFiles/Proyecto.dir/main.c.o: ../dyn/dyn_app_motors.h
 CMakeFiles/Proyecto.dir/main.c.o: ../dyn_test/b_queue.h
 CMakeFiles/Proyecto.dir/main.c.o: ../dyn_test/dyn_emu.h
 CMakeFiles/Proyecto.dir/main.c.o: ../habitacion_001.h
