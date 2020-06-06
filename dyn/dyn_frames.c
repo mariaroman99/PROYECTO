@@ -74,7 +74,8 @@ struct RxReturn RxPacket(void) {
     struct RxReturn respuesta;
     byte bCount;
     byte bCheckSum;
-    byte bLength;
+    byte bLength=0;
+    respuesta.tx_err=false;
     respuesta.time_out = false;
     respuesta.idx = 0;
     //f_Sentit_Dades_Rx();   //Ponemos la linea half duplex en Rx
@@ -82,6 +83,8 @@ struct RxReturn RxPacket(void) {
     for (bCount = 0; bCount < 4; bCount++) {
         f_rx_uart_byte(&respuesta);
     } //fin del for
+
+    bLength=respuesta.StatusPacket[3]+4;
     if (!respuesta.time_out) {
         for (bCount = 0; bCount < respuesta.StatusPacket[3]; bCount++) {
             f_rx_uart_byte(&respuesta);

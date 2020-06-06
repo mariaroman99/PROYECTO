@@ -34,9 +34,9 @@ int main(void) {
     pthread_create(&tid, NULL, dyn_emu, (void *) datos_habitacion);
     pthread_create(&jid, NULL, joystick_emu, (void *) &jid);
 
-    /*
+
     //Testing some high level function
-    /*printf("\nSetting LED to 0 \n");
+    printf("\nSetting LED to 0 \n");
     dyn_led_control(1, 0);
     printf("\nGetting LED value \n");
     dyn_led_read(1, &tmp);
@@ -45,7 +45,7 @@ int main(void) {
     dyn_led_control(1, 1);
     printf("\nGetting LED value \n");
     dyn_led_read(1, &tmp);
-    assert(tmp == 1);*/
+    assert(tmp == 1);
 
 
     printf("\n************************\n");
@@ -56,12 +56,17 @@ int main(void) {
 
     printf("Pulsar 'q' para terminar, qualquier tecla para seguir\n");
     fflush(stdout);//	return 0;
-
+    uint16_t velocitat=0xFF;
+    int sensor = 0;
+    uint8_t rodaDreta = 0x01;
+    uint8_t rodaEsquerra = 0x02;
+    move_foward(ID_MOTOR_L, ID_MOTOR_R, velocitat);
     while (estado != Quit) {
-        uint16_t velocitat=0x0F;
+        /*uint16_t velocitat=0x0F;
         int sensor = 0;
         uint8_t rodaDreta = 0x01;
         uint8_t rodaEsquerra = 0x02;
+         */
         if (simulator_finished) {
             break;
         }

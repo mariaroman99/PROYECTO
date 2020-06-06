@@ -38,7 +38,7 @@ void moure_roda(uint8_t module_id, bool sentit_horari, uint16_t speed){
 	parameters[2]=mov_speed_h; //Posem a mov_speed_h el Moving Speed (H)
 
 	struct RxReturn resposta=RxTxPacket(module_id, 3, _DYN_INSTR__WRITE, parameters);
-
+    /*
 	//Per comprovar si funciona:
     uint16_t vel = resposta.StatusPacket[6] | (resposta.StatusPacket[7] & 0x03); // Hem de juntarlos amb els 2 primers bits del paràmetre 7
     uint8_t dire = resposta.StatusPacket[7] & 0x04; // Hem d'agafar el tercer bit del reguistre low retornat a l'status packet
@@ -54,30 +54,30 @@ void moure_roda(uint8_t module_id, bool sentit_horari, uint16_t speed){
         printf("esquerra");
     }
 	printf("\n");
-
+*/
 }
 
 void move_foward(uint8_t roda_1, uint8_t roda_2, uint16_t speed){
 	bool sentit_horari=true;
-	moure_roda(roda_1, !sentit_horari, speed); //Roda esquerra amb direcció esquerra
+	moure_roda(roda_1, sentit_horari, speed); //Roda esquerra amb direcció esquerra
 	moure_roda(roda_2, sentit_horari, speed); //Roda dreta amb direcció dreta
 }
 
 void move_backward(uint8_t roda_1, uint8_t roda_2,  uint16_t speed){
 	bool sentit_horari=true;
 	moure_roda(roda_1, sentit_horari, speed); //Roda esquerra amb direcció dreta
-	moure_roda(roda_2, !sentit_horari, speed); //Roda dreta amb direcció esquerra
+	moure_roda(roda_2, sentit_horari, speed); //Roda dreta amb direcció esquerra
 }
 
 void move_left(uint8_t roda_1, uint8_t roda_2, uint16_t speed){
 	bool sentit_horari=true;
-	moure_roda(roda_1, !sentit_horari, speed); // Roda esquerra amb direcció esquerra
+	moure_roda(roda_1, sentit_horari, speed); // Roda esquerra amb direcció esquerra
 	moure_roda(roda_2, sentit_horari, (speed+5)); // Roda dreta amb direcció dreta. Augmenta la velocitat
 }
 
 void move_right(uint8_t roda_1, uint8_t roda_2, uint16_t speed){
 	bool sentit_horari=true;
-	moure_roda(roda_1, !sentit_horari, (speed+5)); // Roda esquerra amb direcció esquerra. Augmenta la velocitat
+	moure_roda(roda_1, sentit_horari, (speed+5)); // Roda esquerra amb direcció esquerra. Augmenta la velocitat
 	moure_roda(roda_2, sentit_horari, speed); //Roda dreta amb direcció dreta.
 }
 
