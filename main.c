@@ -11,7 +11,7 @@
 #include "joystick_emu/joystick.h"
 #include "habitacion_001.h"
 #include "dyn/dyn_app_motors.h"
-#include <zconf.h>
+
 //uint8_t dreta=0x01; //Sentit dret de la roda
 //uint8_t esquerra=0x00; //Sentit esquerra de la roda
 
@@ -60,12 +60,7 @@ int main(void) {
     int sensor = 0;
     uint8_t rodaDreta = 0x01;
     uint8_t rodaEsquerra = 0x02;
-    //move_right(ID_MOTOR_L, ID_MOTOR_R, velocitat);
-    move_right(ID_MOTOR_L, ID_MOTOR_R, velocitat);
-    move_foward(ID_MOTOR_L, ID_MOTOR_R, velocitat);
-    //move_right(ID_MOTOR_L, ID_MOTOR_R, velocitat);
-
-    //move_left(ID_MOTOR_L, ID_MOTOR_R, velocitat);
+    pared_mes_propera();
     while (estado != Quit) {
         /*uint16_t velocitat=0x0F;
         int sensor = 0;

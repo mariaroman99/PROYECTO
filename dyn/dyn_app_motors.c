@@ -22,6 +22,7 @@
 #include "../posicion.h"
 
 
+
 void moure_roda(uint8_t module_id, bool sentit_horari, uint16_t speed){
 	byte mov_speed_l, mov_speed_h;
 	if(sentit_horari){
@@ -136,72 +137,86 @@ void moure_continuament(uint8_t module_id){
 }
 
 int pared_mes_propera(){
-    /*uint8_t distEsq = INITIAL_POS_X;
-    uint8_t y = INITIAL_POS_Y;
-    uint8_t distCentre = 4096-y;
-    uint8_t distDreta = 4096-distEsq;
-    uint32_t mon = (void *) datos_habitacion;
-    if (distEsq <= distCentre && distEsq < distDreta){//Moviment a l'esq
-        move_left(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
-        int coordX = INITIAL_POS_X, coordY = INITIAL_POS_Y;
+    uint32_t distEsq = INITIAL_POS_X;
+    uint32_t y = INITIAL_POS_Y;
+    uint32_t distCentre = 0x1000-y;
+    uint32_t distDreta = 0x1000-distEsq;
+    uint16_t velocitat = 0xFF;
+    printf("Esquerra, dreta i centre \n");
+    printf("\n");
+    printf("%" PRIu32, distCentre);
+    printf("\n");
+    printf("%" PRIu8, distEsq);
+    printf("\n");
+    printf("%" PRIu8, distDreta);
+    printf("  principi \n");
+    if (distEsq <= distCentre && distEsq < distDreta){//MOVIMENT ESQUERRA
+        move_left(ID_MOTOR_L, ID_MOTOR_R, velocitat);
+        uint32_t coordX = distEsq;
+        printf("MOVIMENT ESQUERRA \n");
         // Fem un while per comprovar cada cop si hi ha un obstacle a 2 mm del robot
-        while(!obstaculo((coordX-2),coordY, mon)){
-            move_foward(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
+        while(coordX>2){
+            move_foward(ID_MOTOR_L, ID_MOTOR_R, velocitat);
             coordX--;
         }
+        printf("%" PRIu8, coordX);
         // Quan trobi la pared l'haurà de resseguir fent una rotació a la dreta
-        move_right(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
+        //move_right(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
         return 1; //Assignem arbitràriament que la paret esquerra serà 1
     }
-    else if (distCentre < distEsq && distCentre < distDreta){ //Moviment al centre
-        move_foward(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
-        int coordX = INITIAL_POS_X, coordY = INITIAL_POS_Y;
+    else if (distCentre < distEsq && distCentre < distDreta){ //MOVIMENT CENTRE
+        move_foward(ID_MOTOR_L, ID_MOTOR_R, velocitat);
+        uint32_t coordCentre= distCentre;
+        printf("MOVIMENT CENTRE \n");
         // Fem un while per comprovar cada cop si hi ha un obstacle a 2 mm del robot
-        while(!obstaculo(coordX,(coordY+2), mon)){
-            move_foward(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
-            coordY++;
+        while(coordCentre>2){
+            move_foward(ID_MOTOR_L, ID_MOTOR_R, velocitat);
+            coordCentre--;
         }
         // Quan trobi la pared l'haurà de resseguir fent una rotació a la dreta
-        move_right(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
+        //move_right(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
         return 2; //Assignem arbitràriament que la paret central serà 2
     }
-    else if (distDreta <= distCentre && distDreta < distEsq){ //Moviment a la dreta
-        move_right(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
-        int coordX = INITIAL_POS_X, coordY = INITIAL_POS_Y;
+    else if (distDreta <= distCentre && distDreta < distEsq){ //MOVIMENT DRETA
+        move_right(ID_MOTOR_L, ID_MOTOR_R, velocitat);
+        uint32_t coordX = distDreta;
+        printf("MOVIMENT DRETA \n");
         // Fem un while per comprovar cada cop si hi ha un obstacle a 2 mm del robot
-        while(!obstaculo((coordX+2),coordY, mon)){
-            move_foward(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
-            coordX++;
+        while(coordX>2){
+            move_foward(ID_MOTOR_L, ID_MOTOR_R, velocitat);
+            coordX--;
         }
         // Quan trobi la pared l'haurà de resseguir fent una rotació a l'esquerra
-        move_left(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
+        move_left(ID_MOTOR_L, ID_MOTOR_R, velocitat);
         return 3; //Assignem arbitràriament que la paret central serà 3
     }
-    else if(distDreta==distCentre && distDreta==distEsq){ //Moviment esquerra
-        move_left(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
-        int coordX = INITIAL_POS_X, coordY = INITIAL_POS_Y;
+    else if(distDreta==distCentre && distDreta==distEsq){ //MOVIMENT ESQUERRA
+        move_left(ID_MOTOR_L, ID_MOTOR_R, velocitat);
+        uint32_t coordX = INITIAL_POS_X;
+        printf("MOVIMENT ESQUERRA 1 \n");
         // Fem un while per comprovar cada cop si hi ha un obstacle a 2 mm del robot
-        while(!obstaculo((coordX-2),coordY, mon)){
-            move_foward(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
+        while(coordX>2){
+            move_foward(ID_MOTOR_L, ID_MOTOR_R, velocitat);
             coordX--;
         }
         // Quan trobi la pared l'haurà de resseguir fent una rotació a la dreta
-        move_right(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
+        move_right(ID_MOTOR_L, ID_MOTOR_R, velocitat);
         return 1;
     }
-    else if(distDreta==distEsq && distDreta<distCentre){ //Moviment esquerra
-        move_left(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
-        int coordX = INITIAL_POS_X, coordY = INITIAL_POS_Y;
+    else if(distDreta==distEsq && distDreta<distCentre){ //MOVIMENT ESQUERRA
+        move_left(ID_MOTOR_L, ID_MOTOR_R, velocitat);
+        uint32_t coordX = INITIAL_POS_X;
+        printf("MOVIMENT ESQUERRA 2 \n ");
         // Fem un while per comprovar cada cop si hi ha un obstacle a 2 mm del robot
-        while(!obstaculo((coordX-2),coordY, mon)){
-            move_foward(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
+        while(coordX>2){
+            move_foward(ID_MOTOR_L, ID_MOTOR_R, velocitat);
             coordX--;
         }
         // Quan trobi la pared l'haurà de resseguir fent una rotació a la dreta
-        move_right(ID_MOTOR_L, ID_MOTOR_R, SIM_STEP_MS_TIME);
+        move_right(ID_MOTOR_L, ID_MOTOR_R, velocitat);
         return 1;
         }
-        */
+
     return 0;
 
 }
