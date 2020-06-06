@@ -59,8 +59,8 @@ void moure_roda(uint8_t module_id, bool sentit_horari, uint16_t speed){
 
 void move_foward(uint8_t roda_1, uint8_t roda_2, uint16_t speed){
 	bool sentit_horari=true;
-	moure_roda(roda_1, sentit_horari, speed); //Roda esquerra amb direcció esquerra
-	moure_roda(roda_2, sentit_horari, speed); //Roda dreta amb direcció dreta
+	moure_roda(roda_1, !sentit_horari, speed); //Roda esquerra amb direcció esquerra
+	moure_roda(roda_2, !sentit_horari, speed); //Roda dreta amb direcció dreta
 }
 
 void move_backward(uint8_t roda_1, uint8_t roda_2,  uint16_t speed){
@@ -71,14 +71,17 @@ void move_backward(uint8_t roda_1, uint8_t roda_2,  uint16_t speed){
 
 void move_left(uint8_t roda_1, uint8_t roda_2, uint16_t speed){
 	bool sentit_horari=true;
-	moure_roda(roda_1, sentit_horari, speed); // Roda esquerra amb direcció esquerra
-	moure_roda(roda_2, sentit_horari, (speed+5)); // Roda dreta amb direcció dreta. Augmenta la velocitat
+	moure_roda(roda_1, !sentit_horari, speed); // Roda esquerra amb direcció esquerra
+	moure_roda(roda_2, !sentit_horari, (speed+5)); // Roda dreta amb direcció dreta. Augmenta la velocitat
 }
 
 void move_right(uint8_t roda_1, uint8_t roda_2, uint16_t speed){
 	bool sentit_horari=true;
-	moure_roda(roda_1, sentit_horari, (speed+5)); // Roda esquerra amb direcció esquerra. Augmenta la velocitat
-	moure_roda(roda_2, sentit_horari, speed); //Roda dreta amb direcció dreta.
+	moure_roda(roda_1, !sentit_horari, (speed+5));// Roda esquerra amb direcció esquerra. Augmenta la velocitat
+	moure_roda(roda_2, !sentit_horari, speed);
+
+
+    //Roda dreta amb direcció dreta.
 }
 
 
