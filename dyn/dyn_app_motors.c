@@ -23,6 +23,7 @@
 
 
 
+
 void moure_roda(uint8_t module_id, bool sentit_horari, uint16_t speed){
 	byte mov_speed_l, mov_speed_h;
 	if(sentit_horari){
@@ -85,6 +86,15 @@ void move_right(uint8_t roda_1, uint8_t roda_2, uint16_t speed){
     //Roda dreta amb direcció dreta.
 }
 
+void rotar_dreta(uint8_t roda_1, uint8_t roda_2, int grau){
+    bool sentit_horari=true;
+    moure_roda(roda_2, 0x00, 0x00);
+    moure_roda(roda_1, !sentit_horari, 0x0F);
+    Activa_Timer_TimeOut_emu(2.15);
+    moure_roda(roda_1, 0, 0x00);
+
+}
+
 
 
 void canviar_velocitat(uint8_t module_id, uint16_t speed, uint8_t direction){
@@ -130,18 +140,19 @@ void moure_continuament(uint8_t module_id){
 	resposta=RxTxPacket(module_id, 5, _DYN_INSTR__WRITE, parameters);
 
 	//Fem que trobi la paret mes propera i la ressegueixi
-	int paret = pared_mes_propera();
+	//int paret = pared_mes_propera();
 
 	//Cridem a la funció
 
 }
+
 
 int pared_mes_propera(){
     uint32_t distEsq = INITIAL_POS_X;
     uint32_t y = INITIAL_POS_Y;
     uint32_t distCentre = 0x1000-y;
     uint32_t distDreta = 0x1000-distEsq;
-    uint16_t velocitat = 0xFF;
+    uint16_t velocitat = 0x0F;
     printf("Esquerra, dreta i centre \n");
     printf("\n");
     printf("%" PRIu32, distCentre);
@@ -220,3 +231,4 @@ int pared_mes_propera(){
     return 0;
 
 }
+

@@ -8,10 +8,13 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <unistd.h>
+
+
 #include "dyn_test/b_queue.h"
 #include "main.h"
 #include "fake_msp.h"
 #include "dyn/dyn_frames.h"
+
 
 volatile uint8_t UCA2TXBUF = 0;
 volatile uint8_t UCA2RXBUF = 0;
@@ -48,3 +51,6 @@ void rx_uart_byte_emu(struct RxReturn *respuesta) {
     respuesta->idx++;
     usleep(20);
 }
+
+
+

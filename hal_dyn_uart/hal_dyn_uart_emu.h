@@ -20,5 +20,7 @@ void TxUAC2_emu(byte bTxdData);
 
 void rx_uart_byte_emu(struct RxReturn *respuesta);
 
+
+
 #endif /* HAL_DYN_UART_EMU_H_ */
 

@@ -12,6 +12,8 @@
 #include "habitacion_001.h"
 #include "dyn/dyn_app_motors.h"
 
+
+
 //uint8_t dreta=0x01; //Sentit dret de la roda
 //uint8_t esquerra=0x00; //Sentit esquerra de la roda
 
@@ -57,10 +59,10 @@ int main(void) {
     printf("Pulsar 'q' para terminar, qualquier tecla para seguir\n");
     fflush(stdout);//	return 0;
     uint16_t velocitat=0x3FF;
-    int sensor = 0;
-    uint8_t rodaDreta = 0x01;
-    uint8_t rodaEsquerra = 0x02;
+
     pared_mes_propera();
+    //rotar_dreta(ID_MOTOR_L, ID_MOTOR_R, 90);
+    //move_foward(ID_MOTOR_R, ID_MOTOR_L, velocitat);
     while (estado != Quit) {
         /*uint16_t velocitat=0x0F;
         int sensor = 0;
@@ -87,10 +89,8 @@ int main(void) {
                     printf("\n");
                     break;
                 case Up:
-                    move_foward(rodaEsquerra, rodaDreta, velocitat);
                     break;
                 case Down:
-                    move_right(rodaEsquerra, rodaDreta, velocitat);
                     break;
                 case Left:
                     printf("Joystik Left ('j') movido\n");

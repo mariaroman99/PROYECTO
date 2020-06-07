@@ -8,6 +8,7 @@
  */
 
 #include "dyn_frames.h"
+#include <time.h>
 
 #ifndef __MSP432P401R__
 
@@ -126,4 +127,18 @@ struct RxReturn RxTxPacket(byte bID, byte bParameterLength, byte bInstruction,
     TxPacket(bID, bParameterLength, bInstruction, Parametros);
     respuesta = RxPacket();
     return respuesta;
+}
+
+void Activa_Timer_TimeOut_emu(int num_segons) {
+
+    // Converting time into milli_seconds
+    int milli_seconds = 1000 * num_segons;
+
+    // Storing start time
+    clock_t start_time = clock();
+
+    // looping till required time is not achieved
+    while (clock() < start_time + milli_seconds);
+
+
 }

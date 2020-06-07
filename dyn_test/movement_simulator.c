@@ -40,6 +40,10 @@ static _robot_pos_t robot_pos_str;
  * @param t2
  * @return Millisecond time difference
  */
+
+
+
+
 int32_t timediff(clock_t t1, clock_t t2) {
     int32_t elapsed;
     elapsed = (int32_t) ((((double) t2 - t1) / CLOCKS_PER_SEC) * 1000);

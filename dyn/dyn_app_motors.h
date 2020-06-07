@@ -32,7 +32,7 @@ typedef enum _dyn_re_type
 
 }DYN_RE_t;
 
-void moure_roda(uint8_t module_id, bool sentit_horari, uint16_t speed);
+void moure_roda(uint8_t module_id, bool sentit_horari, uint16_t  speed);
 void move_foward(uint8_t roda_1, uint8_t roda_2, uint16_t speed);
 void move_backward(uint8_t roda_1, uint8_t roda_2, uint16_t speed);
 void move_left(uint8_t roda_1, uint8_t roda_2, uint16_t speed);
@@ -40,4 +40,5 @@ void move_right(uint8_t roda_1, uint8_t roda_2, uint16_t speed);
 void canviar_velocitat(uint8_t module_id, uint16_t speed, uint8_t direction);
 void moure_continuament(uint8_t module_id);
 int pared_mes_propera();
+void rotar_dreta(uint8_t roda_1, uint8_t roda_2, int grau);
 #endif /* DYN_APP_MOTORS_H_ */

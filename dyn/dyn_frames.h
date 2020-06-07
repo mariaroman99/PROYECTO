@@ -24,7 +24,7 @@ void Sentit_Dades_Tx(void);
 
 void TxUAC2(byte bTxdData);
 
-void Activa_Timer_TimeOut();
+void Activa_Timer_TimeOut_emu(int num_segons);
 
 void Reset_Timeout();
 
