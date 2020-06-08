@@ -40,6 +40,8 @@ typedef struct _robot_pos {
 
 void init_movement_simulator(const uint32_t *world);
 
+void update_sensor_data();
+
 void update_movement_simulator_values();
 
 void end_simulator();

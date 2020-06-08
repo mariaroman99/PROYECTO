@@ -7,7 +7,9 @@ CMakeFiles/Proyecto.dir/dyn/dyn_app_common.c.obj: ../dyn/dyn_instr.h
 
 CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.obj: ../dyn/dyn_app_motors.h
 CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.obj: ../dyn/dyn_frames.h
+CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.obj: ../dyn/dyn_instr.h
 CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.obj: ../dyn_test/dyn_emu.h
+CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.obj: ../dyn_test/movement_simulator.h
 CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.obj: ../dyn/dyn_app_motors.c
 CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.obj: ../dyn/dyn_app_motors.h
 CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.obj: ../dyn/dyn_frames.h

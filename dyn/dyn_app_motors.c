@@ -11,7 +11,7 @@
 #include <string.h>
 
 
-
+#include "dyn/dyn_instr.h"
 #include "dyn/dyn_frames.h"
 #include "dyn/dyn_app_motors.h"
 #include "dyn_app_motors.h"
@@ -20,6 +20,7 @@
 #include "../dyn_test/movement_simulator.h"
 #include "../dyn_test/dyn_emu.h"
 #include "../posicion.h"
+#include "dyn_test/movement_simulator.h"
 
 
 
@@ -86,13 +87,28 @@ void move_right(uint8_t roda_1, uint8_t roda_2, uint16_t speed){
     //Roda dreta amb direcció dreta.
 }
 
-void rotar_dreta(uint8_t roda_1, uint8_t roda_2, int grau){
-    bool sentit_horari=true;
-    moure_roda(roda_2, 0x00, 0x00);
-    moure_roda(roda_1, !sentit_horari, 0x0F);
-    Activa_Timer_TimeOut_emu(2.15);
-    moure_roda(roda_1, 0, 0x00);
 
+void rotar_dreta(uint8_t roda_1, uint8_t roda_2){
+    bool sentit_horari=true;
+    uint8_t dreta = (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_RIGHT]);
+    while(dreta!=dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]){
+        update_movement_simulator_values();
+        moure_roda(roda_2, 0x00, 0x00);
+        moure_roda(roda_1, !sentit_horari, 0x0f);
+    }
+    moure_roda(roda_1, !sentit_horari, 0);
+
+}
+
+void rotar_esquerra(uint8_t roda_1, uint8_t roda_2) {
+    bool sentit_horari = true;
+    uint8_t esquerra = (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT]);
+    while (esquerra != dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]) {
+        update_movement_simulator_values();
+        moure_roda(roda_1, sentit_horari, 0x00);
+        moure_roda(roda_2, !sentit_horari, 0x0F);
+    }
+    moure_roda(roda_2, !sentit_horari, 0);
 }
 
 

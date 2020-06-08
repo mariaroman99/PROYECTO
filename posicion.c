@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <math.h>
+#include <inttypes.h>
 
 #include "main.h"
 #include "posicion.h"
@@ -94,6 +95,8 @@ sensor_distance(uint16_t x0, uint16_t y0, float theta, const uint32_t *world, ui
         u8_mod = (uint8_t) round(modulo);
     }
     *sensor_data = u8_mod;
+
+
 #if DEBUG_LEVEL > 3
     if (dbg_msg == 0) {
         printf("Robot en (%d, %d, %.3f rad), obstaculo a la izquierda en %dmm\n", x0, y0, theta, indice);
@@ -119,6 +122,7 @@ void distance(_robot_pos_t *robot_pos, uint8_t *izq, uint8_t *centro, uint8_t *d
 
     //Sensor central:
     sensor_distance(x0, y0, theta, robot_pos->world, centro, 1);
+
 
     //Sensor izquierda:
     sensor_distance(x0, y0, theta_l, robot_pos->world, izq, 0);

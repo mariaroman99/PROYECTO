@@ -11,6 +11,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <pthread.h>
+#include <inttypes.h>
 
 #include "main.h"
 #include "movement_simulator.h"
@@ -147,7 +148,8 @@ void calculate_new_position() {
 void update_sensor_data() {
     distance(&robot_pos_str, &dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT],
             &dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER],
-             &dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_RIGHT]);
+            &dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_RIGHT]);
+
 }
 
 

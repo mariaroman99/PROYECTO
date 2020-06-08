@@ -8,7 +8,9 @@ CMakeFiles/Proyecto.dir/dyn/dyn_app_common.c.obj
 CMakeFiles/Proyecto.dir/dyn/dyn_app_motors.c.obj
  ../dyn/dyn_app_motors.h
  ../dyn/dyn_frames.h
+ ../dyn/dyn_instr.h
  ../dyn_test/dyn_emu.h
+ ../dyn_test/movement_simulator.h
  C:/Users/maria/CLionProjects/PROYECTO/dyn/dyn_app_motors.c
  C:/Users/maria/CLionProjects/PROYECTO/dyn/dyn_app_motors.h
  C:/Users/maria/CLionProjects/PROYECTO/dyn/dyn_frames.h
