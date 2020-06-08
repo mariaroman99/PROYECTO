@@ -94,7 +94,7 @@ void rotar_dreta(uint8_t roda_1, uint8_t roda_2){
     while(dreta!=dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]){
         update_movement_simulator_values();
         moure_roda(roda_2, 0x00, 0x00);
-        moure_roda(roda_1, !sentit_horari, 0x0f);
+        moure_roda(roda_1, !sentit_horari, 0x0A);
     }
     moure_roda(roda_1, !sentit_horari, 0);
 
@@ -109,7 +109,7 @@ void rotar_esquerra(uint8_t roda_1, uint8_t roda_2) {
         moure_roda(roda_2, !sentit_horari, 0x0A);
     }
     moure_roda(roda_2, !sentit_horari, 0);
-    printf("*****************************************************************************************************");
+
 }
 
 
@@ -163,8 +163,7 @@ void moure_continuament(uint8_t module_id){
 
 }
 
-
-int pared_mes_propera(){
+void pared_mes_propera(){
     uint32_t distEsq = INITIAL_POS_X;
     uint32_t y = INITIAL_POS_Y;
     uint32_t distCentre = 0x1000-y;
@@ -179,7 +178,7 @@ int pared_mes_propera(){
         }
         // Quan trobi la pared l'haurà de resseguir fent una rotació a la dreta
         rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
-        return 1; //Assignem arbitràriament que la paret esquerra serà 1
+
     }
     else if (distCentre < distEsq && distCentre < distDreta){ //MOVIMENT CENTRE
         printf("MOVIMENT CENTRE \n");
@@ -190,7 +189,7 @@ int pared_mes_propera(){
         }
         // Quan trobi la pared l'haurà de resseguir fent una rotació a la dreta
         rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
-        return 2; //Assignem arbitràriament que la paret central serà 2
+
     }
     else if (distDreta <= distCentre && distDreta < distEsq){ //MOVIMENT DRETA
         printf("MOVIMENT DRETA \n");
@@ -200,8 +199,8 @@ int pared_mes_propera(){
             move_foward(ID_MOTOR_L, ID_MOTOR_R, velocitat);
         }
         // Quan trobi la pared l'haurà de resseguir fent una rotació a l'esquerra
-        rotar_esquerra(ID_MOTOR_L, ID_MOTOR_R);
-        return 3; //Assignem arbitràriament que la paret central serà 3
+        rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
+
     }
     else if(distDreta==distCentre && distDreta==distEsq){ //MOVIMENT ESQUERRA
         printf("MOVIMENT ESQUERRA 1 \n");
@@ -212,7 +211,7 @@ int pared_mes_propera(){
         }
         // Quan trobi la pared l'haurà de resseguir fent una rotació a la dreta
         rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
-        return 1;
+
     }
     else if(distDreta==distEsq && distDreta<distCentre){ //MOVIMENT ESQUERRA
         printf("MOVIMENT ESQUERRA 2 \n ");
@@ -223,10 +222,10 @@ int pared_mes_propera(){
         }
         // Quan trobi la pared l'haurà de resseguir fent una rotació a la dreta
         rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
-        return 1;
+
         }
 
-    return 0;
+
 
 }
 
