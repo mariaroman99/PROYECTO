@@ -58,16 +58,13 @@ int main(void) {
 
     printf("Pulsar 'q' para terminar, qualquier tecla para seguir\n");
     fflush(stdout);//	return 0;
-    uint16_t velocitat=0xFF;
+    uint16_t velocitat=0x3FF;
     pared_mes_propera();
     resseguir(velocitat);
     while (estado != Quit) {
          if (simulator_finished) {
             break;
         }
-
-
-
         Get_estado(&estado, &estado_anterior);
         if (estado != estado_anterior) {
             Set_estado_anterior(estado);

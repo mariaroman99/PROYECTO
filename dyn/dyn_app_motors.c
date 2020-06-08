@@ -242,27 +242,33 @@ void pared_mes_propera(){
 }
 
 void evitar_obstacle(uint16_t speed){
-    rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
+    while(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT]<0x0A) {
+        update_sensor_data();
+        move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
+        printf("*******************************************************************");
+    }
+    rotar_esquerra(ID_MOTOR_L, ID_MOTOR_R);
+
     while(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT]<0x0A){
+        update_sensor_data();
         move_foward(ID_MOTOR_L, ID_MOTOR_R, speed );
     }
     rotar_esquerra(ID_MOTOR_L, ID_MOTOR_R);
-    while(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT]<0x0A){
-        move_foward(ID_MOTOR_L, ID_MOTOR_R, speed );
-    }
-    rotar_esquerra(ID_MOTOR_L, ID_MOTOR_R);
-    while(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]<0x0A){
+    while(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]>0x0A){
+        update_sensor_data();
         move_foward(ID_MOTOR_L, ID_MOTOR_R, speed );
     }
     rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
+
+
 }
 
 void resseguir(uint16_t speed){
     uint32_t y = INITIAL_POS_Y;
-    while(y<4095){
+    while(true){
         move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
-        y++;
         if(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]<0x0A){
+            rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
             evitar_obstacle(speed);
         }
 
