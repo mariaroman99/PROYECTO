@@ -58,22 +58,21 @@ int main(void) {
 
     printf("Pulsar 'q' para terminar, qualquier tecla para seguir\n");
     fflush(stdout);//	return 0;
-    uint16_t velocitat=0x3FF;
+    uint16_t velocitat=0xFF;
     pared_mes_propera();
+    resseguir(velocitat);
     while (estado != Quit) {
-        /*uint16_t velocitat=0x0F;
-        int sensor = 0;
-        uint8_t rodaDreta = 0x01;
-        uint8_t rodaEsquerra = 0x02;
-         */
-        if (simulator_finished) {
+         if (simulator_finished) {
             break;
         }
+
+
 
         Get_estado(&estado, &estado_anterior);
         if (estado != estado_anterior) {
             Set_estado_anterior(estado);
             printf("estado = %d\n", estado);
+
             switch (estado) {
                 case Sw1:
                     printf("Boton Sw1 ('a') apretado\n");
@@ -124,12 +123,12 @@ int main(void) {
                     break;
                     //etc, etc...
             }
-            fflush(stdout);
+
         }
     }
     //Signal the emulation thread to stop
     pthread_kill(tid, SIGTERM);
     pthread_kill(jid, SIGTERM);
     printf("Programa terminado\n");
-    fflush(stdout);
+   fflush(stdout);
 }
