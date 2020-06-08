@@ -59,8 +59,7 @@ int main(void) {
     printf("Pulsar 'q' para terminar, qualquier tecla para seguir\n");
     fflush(stdout);//	return 0;
     uint16_t velocitat=0x3FF;
-    rotar_esquerra(ID_MOTOR_L, ID_MOTOR_R);
-
+    pared_mes_propera();
     while (estado != Quit) {
         /*uint16_t velocitat=0x0F;
         int sensor = 0;
