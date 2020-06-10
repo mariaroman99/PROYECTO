@@ -44,5 +44,6 @@ void moure_continuament(uint8_t module_id);
 void pared_mes_propera();
 void evitar_obstacle(uint16_t speed);
 void resseguir(uint16_t speed);
+void stop();
 
 #endif /* DYN_APP_MOTORS_H_ */

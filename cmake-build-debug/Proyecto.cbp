@@ -162,9 +162,6 @@
 		<Unit filename="C:/Users/maria/CLionProjects/PROYECTO/main.h">
 			<Option target="Proyecto"/>
 		</Unit>
-		<Unit filename="C:/Users/maria/CLionProjects/PROYECTO/movement.log">
-			<Option target="Proyecto"/>
-		</Unit>
 		<Unit filename="C:/Users/maria/CLionProjects/PROYECTO/plot_movement.bat">
 			<Option target="Proyecto"/>
 		</Unit>

@@ -89,11 +89,14 @@ sensor_distance(uint16_t x0, uint16_t y0, float theta, const uint32_t *world, ui
         indice++;
     }
 
+
     if (modulo > 255) {
         u8_mod = 255;
     } else {
         u8_mod = (uint8_t) round(modulo);
     }
+
+
     *sensor_data = u8_mod;
 
 
