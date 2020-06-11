@@ -60,6 +60,8 @@ int main(void) {
     fflush(stdout);//	return 0;
     uint16_t velocitat=0x3FF;
     resseguir(velocitat);
+    stop();
+    //evitar_obstacle(velocitat);
     while (estado != Quit) {
          if (simulator_finished) {
             break;

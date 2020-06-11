@@ -95,33 +95,12 @@ void rotar_dreta(uint8_t roda_1, uint8_t roda_2) {
     bool sentit_horari = true;
     uint8_t dreta = (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_RIGHT]);
     uint8_t centre = (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]);
-    struct timeval t, t2;
-    int microsegundos = 0;
-    gettimeofday(&t, NULL);
-    if (centre == 0xFF) {
-        while (microsegundos < 600000) {
-            gettimeofday(&t2, NULL);
-            microsegundos = ((t2.tv_usec - t.tv_usec) + ((t2.tv_sec - t.tv_sec) * 1000000.0f));
+    while (dreta != dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]) {
             update_sensor_data();
             moure_roda(roda_2, sentit_horari, 0x0F);
             moure_roda(roda_1, !sentit_horari, 0x0F);
         }
-    } else{
-        while (dreta != dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]) {
-            update_sensor_data();
-            moure_roda(roda_2, sentit_horari, 0x0F);
-            moure_roda(roda_1, !sentit_horari, 0x0F);
-        }
-        
-}
-
-    printf("*********************************+");
-    printf("\n");
-    printf("%" PRIu8, centre);
-    printf("\n");
-    printf("%" PRIu8, dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER] );
-    moure_roda(roda_1, 0x00, 0x00);
-    moure_roda(roda_2, 0x00, 0x00);
+    stop();
 
 
 }
@@ -130,39 +109,31 @@ void rotar_esquerra(uint8_t roda_1, uint8_t roda_2) {
     bool sentit_horari = true;
     uint8_t esquerra = (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT]);
     uint8_t centre = (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]);
-    printf("%" PRIu8, esquerra);
-    struct timeval t, t2;
-    int microsegundos=0;
-    gettimeofday(&t, NULL);
-    if(centre==0xFF){
-        while(microsegundos<600000){
-            gettimeofday(&t2, NULL);
-            microsegundos = ((t2.tv_usec - t.tv_usec)  + ((t2.tv_sec - t.tv_sec) * 1000000.0f));
+    update_sensor_data();
+    if (esquerra == 0xFF) {
+        while(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT]>0x0F){
             update_sensor_data();
             moure_roda(roda_1, sentit_horari, 0x0F);
             moure_roda(roda_2, !sentit_horari, 0x0F);
         }
-    }else {
+        stop();
+
+        while(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT]<0xFF){
+            update_sensor_data();
+            moure_roda(roda_1, sentit_horari, 0x0F);
+            moure_roda(roda_2, !sentit_horari, 0x0F);
+        }
 
 
+    } else{
         while (esquerra != dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]) {
             update_sensor_data();
             moure_roda(roda_1, sentit_horari, 0x0F);
             moure_roda(roda_2, !sentit_horari, 0x0F);
-
         }
+
     }
-    printf("*********************************+");
-     printf("\n");
-    printf("%" PRIu8, centre);
-    printf("\n");
-    printf("%" PRIu8, dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER] );
-
-    moure_roda(roda_2, 0x00, 0x00);
-    moure_roda(roda_1, 0x00, 0x00);
-
-
-
+    stop();
 
 }
 
@@ -284,26 +255,49 @@ void pared_mes_propera(){
 }
 
 void evitar_obstacle(uint16_t speed) {
-    while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT] < 0x0A) {
+    while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT] >0x0F) {
         update_sensor_data();
         move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
-        printf("*******************************************************************");
+
     }
     stop();
-    /*
-    rotar_esquerra(ID_MOTOR_L, ID_MOTOR_R);
-
-    while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT] < 0x0A) {
+    while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT] < 0x0F) {
         update_sensor_data();
         move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
+
     }
+    stop();
+    update_sensor_data();
+    struct timeval t, t2;
+    int microsegundos;
+    gettimeofday(&t, NULL);
+    while(microsegundos<100000){
+        move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
+        gettimeofday(&t2, NULL);
+        microsegundos = ((t2.tv_usec - t.tv_usec)  + ((t2.tv_sec - t.tv_sec) * 1000000.0f));
+    }
+    update_sensor_data();
+    stop();
     rotar_esquerra(ID_MOTOR_L, ID_MOTOR_R);
+    stop();
+    update_sensor_data();
+    /*
+    while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT] >0x0A) {
+        update_sensor_data();
+        move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
+
+    }
+    stop();
+     */
     while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER] > 0x0A) {
         update_sensor_data();
         move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
+
     }
+    update_sensor_data();
+    stop();
     rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
-    */
+    stop();
 }
 
 
@@ -314,19 +308,31 @@ void resseguir(uint16_t speed){
     while(true){
         move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
         update_sensor_data();
-        printf("%" PRIu8,dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER] );
-        if(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]<0x0A){
-            printf("*******************************************************************");
+        if(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]<0x0A) {
             rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
-
             while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT] < 0x0F) {
-                printf("-------------------------------------------------------------");
-                printf("%" PRIu8,dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT] );
-                update_sensor_data();
+                 move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
+                 update_sensor_data();
+             }
+            stop();
+            update_sensor_data();
+            struct timeval t, t2;
+            int microsegundos;
+            gettimeofday(&t, NULL);
+            while(microsegundos<100000){
                 move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
+                gettimeofday(&t2, NULL);
+                microsegundos = ((t2.tv_usec - t.tv_usec)  + ((t2.tv_sec - t.tv_sec) * 1000000.0f));
             }
+            update_sensor_data();
             stop();
             rotar_esquerra(ID_MOTOR_L, ID_MOTOR_R);
+            stop();
+            break;
+
+        }
+
+
             /*
 
             while(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT] > 0x0A) {
@@ -335,14 +341,14 @@ void resseguir(uint16_t speed){
             }
             rotar_esquerra(ID_MOTOR_L, ID_MOTOR_R);
              */
-            break;
+
         }
 
 
 
     }
 
-}
+
 
 void stop(){
     moure_roda(ID_MOTOR_L, 0x00, 0x00);
