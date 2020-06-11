@@ -61,7 +61,7 @@ int main(void) {
     uint16_t velocitat=0x3FF;
     resseguir(velocitat);
     stop();
-    //evitar_obstacle(velocitat);
+    evitar_obstacle(velocitat);
     while (estado != Quit) {
          if (simulator_finished) {
             break;

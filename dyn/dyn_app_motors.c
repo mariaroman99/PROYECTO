@@ -261,6 +261,7 @@ void evitar_obstacle(uint16_t speed) {
 
     }
     stop();
+
     while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT] < 0x0F) {
         update_sensor_data();
         move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
@@ -269,26 +270,27 @@ void evitar_obstacle(uint16_t speed) {
     stop();
     update_sensor_data();
     struct timeval t, t2;
-    int microsegundos;
+    int micro;
     gettimeofday(&t, NULL);
-    while(microsegundos<100000){
+    while(micro<100000){
         move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
         gettimeofday(&t2, NULL);
-        microsegundos = ((t2.tv_usec - t.tv_usec)  + ((t2.tv_sec - t.tv_sec) * 1000000.0f));
+        micro = ((t2.tv_usec - t.tv_usec)  + ((t2.tv_sec - t.tv_sec) * 1000000.0f));
     }
+    /*
     update_sensor_data();
     stop();
     rotar_esquerra(ID_MOTOR_L, ID_MOTOR_R);
     stop();
     update_sensor_data();
-    /*
+
     while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT] >0x0A) {
         update_sensor_data();
         move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
 
     }
     stop();
-     */
+
     while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER] > 0x0A) {
         update_sensor_data();
         move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
@@ -298,6 +300,8 @@ void evitar_obstacle(uint16_t speed) {
     stop();
     rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
     stop();
+     */
+
 }
 
 
