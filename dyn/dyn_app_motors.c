@@ -137,6 +137,18 @@ void rotar_esquerra(uint8_t roda_1, uint8_t roda_2) {
 
 }
 
+void avancar(uint16_t speed){
+    struct timeval t, t2;
+    int micro;
+    gettimeofday(&t, NULL);
+    while(micro<100000){
+        move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
+        gettimeofday(&t2, NULL);
+        micro = ((t2.tv_usec - t.tv_usec)  + ((t2.tv_sec - t.tv_sec) * 1000000.0f));
+    }
+
+}
+
 
 
 void canviar_velocitat(uint8_t module_id, uint16_t speed, uint8_t direction){
@@ -254,7 +266,7 @@ void pared_mes_propera(){
     moure_roda(ID_MOTOR_R, 0x00 , 0x00);
 }
 
-void evitar_obstacle(uint16_t speed) {
+void cantonada_inferior_dreta(uint16_t speed) {
     while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT] >0x0F) {
         update_sensor_data();
         move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
@@ -263,35 +275,31 @@ void evitar_obstacle(uint16_t speed) {
     stop();
 
     while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT] < 0x0F) {
-        update_sensor_data();
         move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
+        update_sensor_data();
+
 
     }
     stop();
     update_sensor_data();
-    struct timeval t, t2;
-    int micro;
-    gettimeofday(&t, NULL);
-    while(micro<100000){
-        move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
-        gettimeofday(&t2, NULL);
-        micro = ((t2.tv_usec - t.tv_usec)  + ((t2.tv_sec - t.tv_sec) * 1000000.0f));
-    }
-    /*
+    avancar(speed);
     update_sensor_data();
     stop();
     rotar_esquerra(ID_MOTOR_L, ID_MOTOR_R);
     stop();
-    update_sensor_data();
+}
 
-    while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT] >0x0A) {
+
+void cantonada_superior_dreta(uint16_t speed){
+    update_sensor_data();
+    while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT] >0x0F) {
         update_sensor_data();
         move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
 
     }
     stop();
 
-    while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER] > 0x0A) {
+    while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER] > 0x0F) {
         update_sensor_data();
         move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
 
@@ -300,9 +308,32 @@ void evitar_obstacle(uint16_t speed) {
     stop();
     rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
     stop();
-     */
-
 }
+
+
+void cantonada_inferior_esquerra(uint16_t speed){
+    while(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]>0x0A){
+        update_sensor_data();
+        move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
+    }
+    update_sensor_data();
+    stop();
+    rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
+    stop();
+    update_sensor_data();
+    while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT] < 0x0F) {
+        update_sensor_data();
+        move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
+
+    }
+    stop();
+    update_sensor_data();
+    avancar(speed);
+    update_sensor_data();
+    stop();
+    rotar_esquerra(ID_MOTOR_L, ID_MOTOR_R);
+    stop();
+        }
 
 
 
@@ -310,47 +341,18 @@ void evitar_obstacle(uint16_t speed) {
 
 void resseguir(uint16_t speed){
     while(true){
-        move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
-        update_sensor_data();
-        if(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]<0x0A) {
-            rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
-            while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT] < 0x0F) {
-                 move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
-                 update_sensor_data();
-             }
-            stop();
-            update_sensor_data();
-            struct timeval t, t2;
-            int microsegundos;
-            gettimeofday(&t, NULL);
-            while(microsegundos<100000){
-                move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
-                gettimeofday(&t2, NULL);
-                microsegundos = ((t2.tv_usec - t.tv_usec)  + ((t2.tv_sec - t.tv_sec) * 1000000.0f));
-            }
-            update_sensor_data();
-            stop();
-            rotar_esquerra(ID_MOTOR_L, ID_MOTOR_R);
-            stop();
-            break;
-
-        }
-
-
-            /*
-
-            while(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT] > 0x0A) {
-                update_sensor_data();
-                move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
-            }
-            rotar_esquerra(ID_MOTOR_L, ID_MOTOR_R);
-             */
-
-        }
-
-
+        cantonada_inferior_esquerra(speed);
+        stop();
+        cantonada_inferior_dreta(speed);
+        stop();
+        cantonada_superior_dreta(speed);
+        break;
 
     }
+
+}
+
+
 
 
 
