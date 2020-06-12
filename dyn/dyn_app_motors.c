@@ -95,7 +95,7 @@ void rotar_dreta(uint8_t roda_1, uint8_t roda_2) {
     bool sentit_horari = true;
     uint8_t dreta = (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_RIGHT]);
     uint8_t centre = (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]);
-    while (dreta != dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]) {
+    while (dreta != dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]) { // abans era dreta i centre
             update_sensor_data();
             moure_roda(roda_2, sentit_horari, 0x0F);
             moure_roda(roda_1, !sentit_horari, 0x0F);
@@ -133,6 +133,7 @@ void rotar_esquerra(uint8_t roda_1, uint8_t roda_2) {
         }
 
     }
+
     stop();
 
 }
@@ -209,12 +210,18 @@ void pared_mes_propera(){
     if (distEsq <= distCentre && distEsq < distDreta){//MOVIMENT ESQUERRA
         printf("MOVIMENT ESQUERRA \n");
         rotar_esquerra(ID_MOTOR_L, ID_MOTOR_R);
+        stop();
+        update_sensor_data();
         // Fem un while per comprovar cada cop si hi ha un obstacle a 10 mm del robot
         while(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]>0x0A){
+            update_sensor_data();
            move_foward(ID_MOTOR_L, ID_MOTOR_R, velocitat);
         }
         // Quan trobi la pared l'haurà de resseguir fent una rotació a la dreta
+        stop();
+        update_sensor_data();
         rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
+        stop();
 
     }
     else if (distCentre < distEsq && distCentre < distDreta){ //MOVIMENT CENTRE
@@ -292,13 +299,14 @@ void cantonada_inferior_dreta(uint16_t speed) {
 
 void cantonada_superior_dreta(uint16_t speed){
     update_sensor_data();
+    /*
     while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT] >0x0F) {
         update_sensor_data();
         move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
 
     }
     stop();
-
+    */
     while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER] > 0x0F) {
         update_sensor_data();
         move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
@@ -312,6 +320,7 @@ void cantonada_superior_dreta(uint16_t speed){
 
 
 void cantonada_inferior_esquerra(uint16_t speed){
+    update_sensor_data();
     while(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]>0x0A){
         update_sensor_data();
         move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
@@ -340,13 +349,41 @@ void cantonada_inferior_esquerra(uint16_t speed){
 
 
 void resseguir(uint16_t speed){
+    int count=0;
     while(true){
+        update_sensor_data();
+        move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
+        if(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]<=0x0A){
+            printf("**********************************");
+            rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
+            stop();
+            update_sensor_data();
+        }
+        if(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT]>0x0A){
+            printf("----------------------------------");
+            avancar(speed);
+            stop();
+            update_sensor_data();
+            rotar_esquerra(ID_MOTOR_L, ID_MOTOR_R);
+            stop();
+            update_sensor_data();
+            avancar(speed);
+            stop();
+
+        }
+        /*
         cantonada_inferior_esquerra(speed);
         stop();
         cantonada_inferior_dreta(speed);
         stop();
         cantonada_superior_dreta(speed);
+        stop();
+        update_sensor_data();
+        stop();
+
         break;
+         */
+
 
     }
 

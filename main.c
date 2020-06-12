@@ -59,6 +59,7 @@ int main(void) {
     printf("Pulsar 'q' para terminar, qualquier tecla para seguir\n");
     fflush(stdout);//	return 0;
     uint16_t velocitat=0x3FF;
+
     resseguir(velocitat);
 
     while (estado != Quit) {
@@ -82,8 +83,12 @@ int main(void) {
                     printf("\n");
                     break;
                 case Up:
+                    printf("Joystik Left ('i') movido\n");
+                    pared_mes_propera();
                     break;
                 case Down:
+                    resseguir(velocitat);
+                    printf("Joystik Left ('m') movido\n");
                     break;
                 case Left:
                     printf("Joystik Left ('j') movido\n");
