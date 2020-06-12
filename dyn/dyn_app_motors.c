@@ -273,79 +273,6 @@ void pared_mes_propera(){
     moure_roda(ID_MOTOR_R, 0x00 , 0x00);
 }
 
-void cantonada_inferior_dreta(uint16_t speed) {
-    while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT] >0x0F) {
-        update_sensor_data();
-        move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
-
-    }
-    stop();
-
-    while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT] < 0x0F) {
-        move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
-        update_sensor_data();
-
-
-    }
-    stop();
-    update_sensor_data();
-    avancar(speed);
-    update_sensor_data();
-    stop();
-    rotar_esquerra(ID_MOTOR_L, ID_MOTOR_R);
-    stop();
-}
-
-
-void cantonada_superior_dreta(uint16_t speed){
-    update_sensor_data();
-    /*
-    while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT] >0x0F) {
-        update_sensor_data();
-        move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
-
-    }
-    stop();
-    */
-    while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER] > 0x0F) {
-        update_sensor_data();
-        move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
-
-    }
-    update_sensor_data();
-    stop();
-    rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
-    stop();
-}
-
-
-void cantonada_inferior_esquerra(uint16_t speed){
-    update_sensor_data();
-    while(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]>0x0A){
-        update_sensor_data();
-        move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
-    }
-    update_sensor_data();
-    stop();
-    rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
-    stop();
-    update_sensor_data();
-    while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT] < 0x0F) {
-        update_sensor_data();
-        move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
-
-    }
-    stop();
-    update_sensor_data();
-    avancar(speed);
-    update_sensor_data();
-    stop();
-    rotar_esquerra(ID_MOTOR_L, ID_MOTOR_R);
-    stop();
-        }
-
-
-
 
 
 void resseguir(uint16_t speed){
@@ -359,7 +286,7 @@ void resseguir(uint16_t speed){
             stop();
             update_sensor_data();
         }
-        if(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT]>0x0A){
+        if(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT]>0x0F){
             printf("----------------------------------");
             avancar(speed);
             stop();
