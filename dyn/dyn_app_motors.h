@@ -42,10 +42,9 @@ void rotar_esquerra(uint8_t roda_1, uint8_t roda_2);
 void canviar_velocitat(uint8_t module_id, uint16_t speed, uint8_t direction);
 void moure_continuament(uint8_t module_id);
 void pared_mes_propera();
-void cantonada_inferior_dreta(uint16_t speed);
-void cantonada_inferior_esquerra(uint16_t speed);
-void resseguir(uint16_t speed);
+
+_Noreturn void resseguir(uint16_t speed);
 void stop();
-void cantonada_superior_dreta(uint16_t speed);
+
 
 #endif /* DYN_APP_MOTORS_H_ */

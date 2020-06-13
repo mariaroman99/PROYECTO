@@ -95,14 +95,12 @@ void rotar_dreta(uint8_t roda_1, uint8_t roda_2) {
     bool sentit_horari = true;
     uint8_t dreta = (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_RIGHT]);
     uint8_t centre = (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]);
-    while (dreta != dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]) { // abans era dreta i centre
+    while (dreta != dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]) {
             update_sensor_data();
             moure_roda(roda_2, sentit_horari, 0x0F);
             moure_roda(roda_1, !sentit_horari, 0x0F);
         }
     stop();
-
-
 }
 
 void rotar_esquerra(uint8_t roda_1, uint8_t roda_2) {
@@ -115,27 +113,19 @@ void rotar_esquerra(uint8_t roda_1, uint8_t roda_2) {
             update_sensor_data();
             moure_roda(roda_1, sentit_horari, 0x0F);
             moure_roda(roda_2, !sentit_horari, 0x0F);
-        }
-        stop();
-
+        }stop();
         while(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT]<0xFF){
             update_sensor_data();
             moure_roda(roda_1, sentit_horari, 0x0F);
             moure_roda(roda_2, !sentit_horari, 0x0F);
         }
-
-
     } else{
         while (esquerra != dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]) {
             update_sensor_data();
             moure_roda(roda_1, sentit_horari, 0x0F);
             moure_roda(roda_2, !sentit_horari, 0x0F);
         }
-
-    }
-
-    stop();
-
+    }stop();
 }
 
 void avancar(uint16_t speed){
@@ -217,55 +207,78 @@ void pared_mes_propera(){
             update_sensor_data();
            move_foward(ID_MOTOR_L, ID_MOTOR_R, velocitat);
         }
+
+        stop();
+        update_sensor_data();
+        // Quan trobi la pared l'haurà de resseguir fent una rotació a la dreta
+        rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
+        stop();
+}
+    else if (distCentre < distEsq && distCentre < distDreta){ //MOVIMENT CENTRE
+        printf("MOVIMENT CENTRE \n");
+        move_foward(ID_MOTOR_L, ID_MOTOR_R, velocitat);
+        stop();
+        update_sensor_data();
+        // Fem un while per comprovar cada cop si hi ha un obstacle a 10 mm del robot
+        while(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]>0x0A){
+            update_sensor_data();
+            move_foward(ID_MOTOR_L, ID_MOTOR_R, velocitat);
+        }
         // Quan trobi la pared l'haurà de resseguir fent una rotació a la dreta
         stop();
         update_sensor_data();
         rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
         stop();
-
-    }
-    else if (distCentre < distEsq && distCentre < distDreta){ //MOVIMENT CENTRE
-        printf("MOVIMENT CENTRE \n");
-        move_foward(ID_MOTOR_L, ID_MOTOR_R, velocitat);
-        // Fem un while per comprovar cada cop si hi ha un obstacle a 10 mm del robot
-        while(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]>0x0A){
-            move_foward(ID_MOTOR_L, ID_MOTOR_R, velocitat);
-        }
-        // Quan trobi la pared l'haurà de resseguir fent una rotació a la dreta
-        rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
-
-    }
+}
     else if (distDreta <= distCentre && distDreta < distEsq){ //MOVIMENT DRETA
         printf("MOVIMENT DRETA \n");
         rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
+        stop();
+        update_sensor_data();
          // Fem un while per comprovar cada cop si hi ha un obstacle a 10 mm del robot
         while(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]>0x0A){
+            update_sensor_data();
             move_foward(ID_MOTOR_L, ID_MOTOR_R, velocitat);
         }
+        stop();
+        update_sensor_data();
         // Quan trobi la pared l'haurà de resseguir fent una rotació a l'esquerra
         rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
+        stop();
 
     }
     else if(distDreta==distCentre && distDreta==distEsq){ //MOVIMENT ESQUERRA
         printf("MOVIMENT ESQUERRA 1 \n");
         rotar_esquerra(ID_MOTOR_L, ID_MOTOR_R);
+        stop();
+        update_sensor_data();
         // Fem un while per comprovar cada cop si hi ha un obstacle a 10 mm del robot
         while(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]>0x0A){
+            update_sensor_data();
             move_foward(ID_MOTOR_L, ID_MOTOR_R, velocitat);
         }
+        stop();
+        update_sensor_data();
         // Quan trobi la pared l'haurà de resseguir fent una rotació a la dreta
         rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
+        stop();
 
     }
     else if(distDreta==distEsq && distDreta<distCentre) { //MOVIMENT ESQUERRA
         printf("MOVIMENT ESQUERRA 2 \n ");
         rotar_esquerra(ID_MOTOR_L, ID_MOTOR_R);
+        stop();
+        update_sensor_data();
         // Fem un while per comprovar cada cop si hi ha un obstacle a 10 mm del robot
         while (dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER] > 0x0A) {
+            update_sensor_data();
             move_foward(ID_MOTOR_L, ID_MOTOR_R, velocitat);
         }
+        stop();
+        update_sensor_data();
         // Quan trobi la pared l'haurà de resseguir fent una rotació a la dreta
         rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
+        stop();
 
     }
 
@@ -274,20 +287,16 @@ void pared_mes_propera(){
 }
 
 
-
-void resseguir(uint16_t speed){
-    int count=0;
+_Noreturn void resseguir(uint16_t speed){
     while(true){
         update_sensor_data();
         move_foward(ID_MOTOR_L, ID_MOTOR_R, speed);
         if(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_CENTER]<=0x0A){
-            printf("**********************************");
             rotar_dreta(ID_MOTOR_L, ID_MOTOR_R);
             stop();
             update_sensor_data();
         }
         if(dyn_mem[SENSOR_MEM_ROW][DYN_REG__IR_LEFT]>0x0F){
-            printf("----------------------------------");
             avancar(speed);
             stop();
             update_sensor_data();
@@ -296,24 +305,8 @@ void resseguir(uint16_t speed){
             update_sensor_data();
             avancar(speed);
             stop();
-
         }
-        /*
-        cantonada_inferior_esquerra(speed);
-        stop();
-        cantonada_inferior_dreta(speed);
-        stop();
-        cantonada_superior_dreta(speed);
-        stop();
-        update_sensor_data();
-        stop();
-
-        break;
-         */
-
-
     }
-
 }
 
 
